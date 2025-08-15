@@ -55,6 +55,10 @@ pipeline {
         }
         stage('Deploy to VM with Docker') {
             steps {
+                // Limpiar carpeta en la VM antes de copiar
+                sh """
+                    sshpass -p "$VM_PASS" ssh -o StrictHostKeyChecking=no $VM_USER@$VM_HOST 'rm -rf /tmp/app'
+                """
                 // Subir el código a la VM
                 sh '''
                 sshpass -p "$VM_PASS" scp -o StrictHostKeyChecking=no -r . $VM_USER@$VM_HOST:/tmp/app
