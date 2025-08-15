@@ -61,7 +61,7 @@ pipeline {
                 '''
                 // Ejecutar build y run en la VM
                 sh '''
-                sshpass -p "$VM_PASS" ssh -o StrictHostKeyChecking=no $VM_USER@$VM_HOST << 'EOF'
+                sshpass -p "$VM_PASS" ssh -o StrictHostKeyChecking=no $VM_USER@$VM_HOST << EOF
                     cd /tmp/app
                     docker build -t $IMAGE_NAME .
                     docker rm -f demo-ci-cd || true
