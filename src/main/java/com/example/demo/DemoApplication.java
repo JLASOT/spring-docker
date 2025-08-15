@@ -16,6 +16,6 @@ public class DemoApplication {
 class HelloController {
     @GetMapping("/")
     public String hello() {
-        return "Hello CI/CD World!";
+        return "Hello pipeline con docker!";
     }
 }
