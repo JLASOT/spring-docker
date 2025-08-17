@@ -1,3 +1,35 @@
+# version: "3.9"
+
+# networks:
+#   my-virtual-net:
+#     driver: bridge
+#     ipam:
+#       config:
+#         - subnet: 172.25.0.0/16
+#           gateway: 172.25.0.1
+
+# services:
+#   spring-docker-demo:
+#     image: spring-docker-demo:latest
+#     container_name: spring-docker-demo
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     ports:
+#       - "8080:8080"
+#     networks:
+#       my-virtual-net:
+#         ipv4_address: 172.25.0.10
+
+#   my-nginx:
+#     image: nginx:latest
+#     container_name: my-nginx
+#     ports:
+#       - "8081:80"
+#     networks:
+#       my-virtual-net:
+#         ipv4_address: 172.25.0.20
+
 version: "3.9"
 
 networks:
@@ -9,23 +41,15 @@ networks:
           gateway: 172.25.0.1
 
 services:
-  spring-docker-demo:
-    image: spring-docker-demo:latest
-    container_name: spring-docker-demo
+  spring-docker:
     build:
       context: .
       dockerfile: Dockerfile
+    image: spring-docker-demo:latest
+    container_name: spring-docker
     ports:
-      - "8080:8080"
+      - "8081:8080"
     networks:
       my-virtual-net:
         ipv4_address: 172.25.0.10
 
-  my-nginx:
-    image: nginx:latest
-    container_name: my-nginx
-    ports:
-      - "8081:80"
-    networks:
-      my-virtual-net:
-        ipv4_address: 172.25.0.20
