@@ -140,7 +140,7 @@ pipeline {
     environment {
         IMAGE_NAME = "jenkins-ci-cd:latest"
         VM_USER = "jenkins"
-        VM_HOST = "192.168.100.11"
+        VM_HOST = "192.168.100.199"
     }
 
     stages {
